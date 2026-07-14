@@ -10,50 +10,59 @@ export const profile = {
   },
   logo: asset("../assets/brand/logo-nombre.png"),
   symbol: asset("../assets/brand/logo.png"),
+  portrait: asset("../assets/brand/cara.png"),
   location: "Spain",
   intro: {
     en: "Portfolio of industrial design, product development and technical visualization projects.",
     es: "Portfolio de proyectos de diseno industrial, desarrollo de producto y visualizacion tecnica.",
   },
   about: {
-    en: "Industrial engineer interested in product design, manufacturing, functional improvement of everyday objects and visual communication of technical solutions.",
-    es: "Ingeniero industrial con interes en el diseno de producto, la fabricacion, la mejora funcional de objetos cotidianos y la comunicacion visual de soluciones tecnicas.",
+    en: [
+      "I am an Industrial Design and Product Development Engineering student at the University of Malaga.",
+      "I believe that good design is not about adding more, but about understanding. It starts with defining the problem precisely, reducing complexity, and developing solutions that create real value. My work strives to balance innovation, functionality, and aesthetics while always considering technical and industrial feasibility.",
+      "This portfolio showcases a selection of academic projects that reflect both my growth and my approach to design: simple when it can be, precise when it needs to be, and always focused on creating products that are useful, honest, and built to last.",
+    ],
+    es: [
+      "Soy estudiante de Ingenieria en Diseno Industrial y Desarrollo del Producto en la Universidad de Malaga.",
+      "Creo que el buen diseno no consiste en anadir mas, sino en entender mejor. Empieza por definir el problema con precision, reducir la complejidad y desarrollar soluciones que generen valor real. Mi trabajo busca equilibrar innovacion, funcionalidad y estetica, siempre considerando la viabilidad tecnica e industrial.",
+      "Este portfolio muestra una seleccion de proyectos academicos que reflejan tanto mi evolucion como mi forma de entender el diseno: simple cuando puede serlo, preciso cuando debe serlo y siempre enfocado en crear productos utiles, honestos y pensados para durar.",
+    ],
   },
   seeks: {
     en: "He seeks to participate in projects where technical rigor, aesthetics and user experience advance together from the first sketch to final validation.",
     es: "Busca participar en proyectos donde el rigor tecnico, la estetica y la experiencia de uso avancen juntos desde el primer boceto hasta la validacion final.",
   },
   course: {
-    en: "Degree in Industrial Engineering",
-    es: "Grado en Ingenieria Industrial",
+    en: "Starting the fourth year of the degree.",
+    es: "Voy a cursar cuarto curso del grado.",
   },
   curriculum: {
     en: [
-      "Technical training focused on design, 3D modeling and product analysis.",
-      "Academic experience developing concepts, drawings, renders and technical documentation.",
-      "Interest in manufacturing processes, prototyping, materials and professional project presentation.",
+      "Industrial Design and Product Development Engineering student.",
+      "Driving license.",
+      "Black belt, First Dan in Karate, with more than 10 years of experience.",
     ],
     es: [
-      "Formacion tecnica orientada al diseno, modelado 3D y analisis de producto.",
-      "Experiencia academica en desarrollo de conceptos, planos, renders y documentacion tecnica.",
-      "Interes por procesos de fabricacion, prototipado, materiales y presentacion profesional de proyectos.",
+      "Estudiante de Ingenieria en Diseno Industrial y Desarrollo del Producto.",
+      "Carnet de coche.",
+      "Cinturon negro Primer Dan de Karate, con mas de 10 anos de experiencia.",
     ],
   },
   contacts: [
     {
       label: "Email",
-      value: "alejandro@dominio.com",
-      href: "mailto:alejandro@dominio.com",
+      value: "a.biedmacarrasco@gmail.com",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=a.biedmacarrasco@gmail.com",
     },
     {
       label: "LinkedIn",
-      value: "linkedin.com/in/alejandro-biedma",
-      href: "https://www.linkedin.com/in/alejandro-biedma",
+      value: "linkedin.com/in/alejandro-biedma-carrasco-ba7702405",
+      href: "https://www.linkedin.com/in/alejandro-biedma-carrasco-ba7702405/",
     },
     {
       label: "Instagram",
-      value: "@alejandro.biedma",
-      href: "https://www.instagram.com/alejandro.biedma",
+      value: "@a.biedma",
+      href: "https://www.instagram.com/a.biedma/",
     },
   ],
 };
@@ -61,44 +70,48 @@ export const profile = {
 export const programs = [
   {
     name: "SolidWorks",
-    logo: "https://cdn.simpleicons.org/dassaultsystemes/1f1f1f",
+    logo: "https://img.icons8.com/color/1200/solidworks.jpg",
   },
   {
     name: "AutoCAD",
-    logo: "https://cdn.simpleicons.org/autodesk/1f1f1f",
+    logo: "https://e7.pngegg.com/pngimages/840/605/png-clipart-letter-a-illustration-autocad-lt-computer-aided-design-drawing-autodesk-autocad-logo-angle-3d-computer-graphics-thumbnail.png",
   },
   {
-    name: "Fusion 360",
-    logo: "https://cdn.simpleicons.org/autodesk/1f1f1f",
+    name: "3ds Max",
+    logo: "https://images.seeklogo.com/logo-png/48/1/3ds-max-logo-png_seeklogo-482396.png",
   },
   {
-    name: "KeyShot",
-    logo: "https://cdn.simpleicons.org/keyshot/1f1f1f",
+    name: "CorelDRAW",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4wfYoTNTXHJKPy4IJQikTzXvtiJbLmQwDa05qHpEhEjrvsbj6uG_YCmX3&s=10",
+  },
+  {
+    name: "Affinity",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Affinity_%28App%29_Logo.svg/3840px-Affinity_%28App%29_Logo.svg.png",
+  },
+  {
+    name: "Geany",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Geany_logo.svg/250px-Geany_logo.svg.png",
   },
   {
     name: "MATLAB",
-    logo: "https://cdn.simpleicons.org/mathworks/1f1f1f",
-  },
-  {
-    name: "Adobe Illustrator",
-    logo: "https://cdn.simpleicons.org/adobeillustrator/1f1f1f",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg",
   },
 ];
 
 export const languages = [
   {
-    name: { en: "Spanish", es: "Espanol" },
+    name: { en: "Spanish", es: "Español" },
     level: { en: "Native", es: "Nativo" },
   },
   {
-    name: { en: "English", es: "Ingles" },
-    level: { en: "Professional proficiency", es: "Competencia profesional" },
+    name: { en: "English", es: "Inglés" },
+    level: { en: "Intermediate", es: "Intermedio" },
   },
 ];
 
 export const hobbies = {
-  en: ["Product design", "3D modeling", "Prototyping", "Product photography"],
-  es: ["Diseno de producto", "Modelado 3D", "Prototipado", "Fotografia de producto"],
+  en: ["Karate", "Product design", "3D modeling", "Technical drawing"],
+  es: ["Karate", "Diseno de producto", "Modelado 3D", "Dibujo tecnico"],
 };
 
 export const projects = [

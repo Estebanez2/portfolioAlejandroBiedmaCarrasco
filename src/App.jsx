@@ -18,9 +18,9 @@ const ui = {
     backToIndex: "Back to index",
     close: "Close",
     contact: "Contact",
-    contactHeading: "Professional conversations, collaborations and portfolio.",
+    contactHeading: "Engineering dialogue for precise industrial solutions.",
     curriculum: "Curriculum",
-    downloadPdf: "Project PDF",
+    downloadPdf: "Project report",
     hobbies: "Hobbies",
     languages: "Languages",
     nextPlan: "Next drawing",
@@ -37,9 +37,9 @@ const ui = {
     backToIndex: "Volver al indice",
     close: "Cerrar",
     contact: "Contacto",
-    contactHeading: "Conversaciones profesionales, colaboraciones y portfolio.",
+    contactHeading: "Dialogo tecnico para soluciones industriales precisas.",
     curriculum: "Curriculum",
-    downloadPdf: "PDF del proyecto",
+    downloadPdf: "Memoria del Proyecto",
     hobbies: "Hobbies",
     languages: "Idiomas",
     nextPlan: "Plano siguiente",
@@ -90,16 +90,24 @@ function Shell({ children, route, lang, onLanguageChange }) {
 
       <main className="main-stage">{children}</main>
 
-      <label className="language-switcher">
-        <span>{copy.switchLanguage}</span>
-        <select
-          value={lang}
-          onChange={(event) => onLanguageChange(event.target.value)}
+      <div className="language-switcher" aria-label={copy.switchLanguage}>
+        <button
+          className={lang === "en" ? "active" : ""}
+          type="button"
+          onClick={() => onLanguageChange("en")}
         >
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-        </select>
-      </label>
+          <span aria-hidden="true">🇬🇧</span>
+          EN
+        </button>
+        <button
+          className={lang === "es" ? "active" : ""}
+          type="button"
+          onClick={() => onLanguageChange("es")}
+        >
+          <span aria-hidden="true">🇪🇸</span>
+          ES
+        </button>
+      </div>
 
       <nav className="bottom-nav" aria-label="Main navigation">
         {navItems.map((item) => (
@@ -242,11 +250,9 @@ function ProjectPage({ project, lang }) {
       <header className="detail-hero">
         <div className="detail-copy">
           <img className="project-brand" src={project.brand} alt="" />
-          <span>{localize(project.discipline, lang)} / {project.year}</span>
-          <h1>{project.title}</h1>
           <div className="detail-actions">
             <a
-              className="primary-link"
+              className="primary-link document-link"
               href={project.document}
               target="_blank"
               rel="noreferrer"
@@ -301,20 +307,28 @@ function ProjectPage({ project, lang }) {
             <span className="section-kicker">{copy.plans}</span>
             <h2>{localize(selectedPlan.label, lang)}</h2>
           </div>
-          <div className="plan-controls" aria-label={copy.plans}>
-            <button type="button" onClick={goToPreviousPlan} aria-label={copy.previousPlan}>
-              <span aria-hidden="true">&lt;</span>
-            </button>
-            <span>
-              {selectedPlanIndex + 1} / {project.plans.length}
-            </span>
-            <button type="button" onClick={goToNextPlan} aria-label={copy.nextPlan}>
-              <span aria-hidden="true">&gt;</span>
-            </button>
-          </div>
+          <span className="plan-count">
+            {selectedPlanIndex + 1} / {project.plans.length}
+          </span>
         </div>
         <div className="plan-viewer">
+          <button
+            className="plan-arrow plan-arrow-left"
+            type="button"
+            onClick={goToPreviousPlan}
+            aria-label={copy.previousPlan}
+          >
+            <span aria-hidden="true">&lt;</span>
+          </button>
           <img src={selectedPlan.image} alt={localize(selectedPlan.label, lang)} />
+          <button
+            className="plan-arrow plan-arrow-right"
+            type="button"
+            onClick={goToNextPlan}
+            aria-label={copy.nextPlan}
+          >
+            <span aria-hidden="true">&gt;</span>
+          </button>
         </div>
       </section>
     </article>
@@ -326,30 +340,84 @@ function ContactPage({ lang }) {
 
   return (
     <section className="contact-page">
-      <div className="page-heading">
-        <span>{copy.contact}</span>
-        <h1>{copy.contactHeading}</h1>
-      </div>
-      <div className="contact-list">
-        {profile.contacts.map((contact) => (
-          <a key={contact.label} href={contact.href} target="_blank" rel="noreferrer">
-            <span>{contact.label}</span>
-            <strong>{contact.value}</strong>
-          </a>
-        ))}
+      <div className="page-heading contact-heading">
+        <div>
+          <span>{copy.contact}</span>
+          <h1>{copy.contactHeading}</h1>
+        </div>
+        <div className="contact-list">
+          {profile.contacts.map((contact) => (
+            <a
+              key={contact.label}
+              href={contact.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ContactIcon label={contact.label} />
+              <span>
+                <strong>{contact.label}</strong>
+                <small>
+                  {contact.label === "Email" ? contact.value : "@a.biedma"}
+                </small>
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
+function ContactIcon({ label }) {
+  const key = label.toLowerCase();
+
+  if (key === "email") {
+    return (
+      <img
+        src="https://cdn.simpleicons.org/gmail/FFFFFF"
+        alt=""
+        aria-hidden="true"
+      />
+    );
+  }
+
+  if (key === "linkedin") {
+    return (
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='%23ffffff' d='M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z'/%3E%3C/svg%3E"
+        alt=""
+        aria-hidden="true"
+      />
+    );
+  }
+
+  return (
+    <img
+      src="https://cdn.simpleicons.org/instagram/FFFFFF"
+      alt=""
+      aria-hidden="true"
+    />
+  );
+}
+
 function AboutPage({ lang }) {
   const copy = ui[lang];
+  const aboutContent = localize(profile.about, lang);
+  const aboutLines = Array.isArray(aboutContent) ? aboutContent : [aboutContent];
 
   return (
     <section className="about-page">
-      <div className="page-heading">
-        <span>{localize(navItems[2].label, lang)}</span>
-        <h1>{localize(profile.about, lang)}</h1>
+      <div className="page-heading about-heading">
+        <div className="about-heading-copy">
+          <span>{localize(navItems[2].label, lang)}</span>
+          <h1>{aboutLines[0]}</h1>
+          <div className="about-intro">
+            {aboutLines.slice(1).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+        <img src={profile.portrait} alt={profile.name} />
       </div>
 
       <section className="about-block">
