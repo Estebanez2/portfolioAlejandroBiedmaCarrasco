@@ -1,0 +1,231 @@
+﻿.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 360px));
+  gap: 18px;
+  align-items: start;
+  justify-content: start;
+  max-width: 100%;
+}
+
+.project-tile {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(31, 31, 31, 0.2);
+  border-radius: 0;
+  padding: 18px;
+  color: var(--panel);
+  background: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.project-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(31, 31, 31, 0.12), rgba(31, 31, 31, 0.76)),
+    linear-gradient(45deg, rgba(201, 66, 58, 0.42), transparent 48%);
+  transition: opacity 180ms ease;
+}
+
+.project-tile:hover::after {
+  opacity: 0.78;
+}
+
+.tile-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.project-tile:hover .tile-cover {
+  transform: scale(1.045);
+}
+
+.project-tile span,
+.project-tile strong {
+  position: relative;
+  z-index: 1;
+}
+
+.tile-logo {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.tile-logo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.tile-logo-hover {
+  opacity: 0;
+}
+
+.project-tile:hover .tile-logo-default {
+  opacity: 0;
+}
+
+.project-tile:hover .tile-logo-hover {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.tile-meta {
+  margin-top: auto;
+  color: rgba(255, 250, 241, 0.74);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.project-tile strong {
+  max-width: 12ch;
+  margin-top: 8px;
+  font-size: clamp(2rem, 3.7vw, 3.85rem);
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  padding: 28px;
+  background: rgba(31, 31, 31, 0.56);
+  display: grid;
+  place-items: center;
+}
+
+.project-modal {
+  position: relative;
+  width: min(1180px, calc(100vw - 40px));
+  height: min(720px, calc(100vh - 40px));
+  overflow: hidden;
+  border: 1px solid rgba(255, 250, 241, 0.34);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: minmax(420px, 1.08fr) minmax(420px, 0.92fr);
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(31, 31, 31, 0.22);
+  border-radius: 50%;
+  color: var(--ink);
+  background: rgba(255, 250, 241, 0.84);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.icon-button span[aria-hidden="true"] {
+  translate: 0 -1px;
+  font-size: 1.22rem;
+  line-height: 1;
+}
+
+.modal-media {
+  min-height: 0;
+  background: var(--ink);
+}
+
+.modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-copy {
+  min-width: 0;
+  padding: clamp(28px, 3.4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.modal-content {
+  min-width: 0;
+}
+
+.modal-brand {
+  width: clamp(240px, 26vw, 390px);
+  height: auto;
+  margin-bottom: clamp(18px, 2.7vw, 30px);
+}
+
+.modal-details {
+  margin: 0;
+}
+
+.modal-details div {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 8px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.modal-details div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-details dt,
+.modal-details dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1rem, 1.55vw, 1.32rem);
+  line-height: 1.32;
+}
+
+.modal-details dt {
+  font-weight: 700;
+}
+
+.modal-details dt::after {
+  content: ":";
+}
+
+.modal-details dd {
+  color: var(--muted);
+}
+
+.modal-details dd span {
+  display: block;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: clamp(26px, 3vw, 48px);
+  padding-bottom: clamp(24px, 3vw, 46px);
+}
+

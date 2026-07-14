@@ -1,0 +1,79 @@
+﻿.about-page {
+  padding-bottom: 28px;
+}
+
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.software-item {
+  min-height: 118px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 241, 0.62);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.software-item img {
+  position: absolute;
+  inset: 0;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.software-mark {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.software-mark img {
+  background: transparent;
+}
+
+.software-item span {
+  font-weight: 700;
+}
+
+.software-item:hover {
+  background: rgba(255, 250, 241, 0.86);
+  transform: translateY(-1px);
+}
+
+.about-two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pill-list span {
+  min-height: 38px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 241, 0.5);
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+

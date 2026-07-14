@@ -1,0 +1,18 @@
+﻿.contact-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 34vw);
+  gap: clamp(28px, 5vw, 86px);
+  align-items: stretch;
+  min-height: calc(100vh - 260px);
+  padding: clamp(12px, 2vh, 24px) 0 0;
+}
+
+.contact-heading h1 {
+  max-width: 900px;
+  font-size: clamp(3.6rem, 7vw, 6.7rem);
+}
+
+.contact-heading > div > span {
+  font-size: clamp(1rem, 1.35vw, 1.28rem);
+}
+

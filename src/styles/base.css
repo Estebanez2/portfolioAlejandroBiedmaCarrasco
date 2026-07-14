@@ -1,0 +1,110 @@
+﻿@font-face {
+  font-family: "GeistNumbers";
+  src: url("../assets/fonts/Geist/Geist-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030-0039;
+}
+
+@font-face {
+  font-family: "Qurova";
+  src: url("../assets/fonts/qurova-font-family/QurovaDEMO-Light-BF67a5c6380ebd4.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qurova";
+  src: url("../assets/fonts/qurova-font-family/QurovaDEMO-Regular-BF67a5c637a5dc9.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qurova";
+  src: url("../assets/fonts/qurova-font-family/QurovaDEMO-Medium-BF67a5c6382651c.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qurova";
+  src: url("../assets/fonts/qurova-font-family/QurovaDEMO-SemiBold-BF67a5c637bcd0b.otf")
+    format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qurova";
+  src: url("../assets/fonts/qurova-font-family/QurovaDEMO-Bold-BF67a5c637eed62.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --paper: #f6f2ea;
+  --ink: #1f1f1f;
+  --muted: #6a665e;
+  --line: #d8d0c3;
+  --panel: #fffaf1;
+  --red: #c9423a;
+  --blue: #14779c;
+  --yellow: #d8b321;
+  --green: #53715b;
+  --shadow: 0 28px 80px rgba(31, 31, 31, 0.18);
+  --site-font: "GeistNumbers", "Qurova", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--site-font);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--paper);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(255, 250, 241, 0.96) 0%, rgba(246, 242, 234, 0.94) 42%, rgba(237, 230, 219, 0.9) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(216, 208, 195, 0.18));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
