@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
   font-family: "GeistNumbers";
   src: url("../assets/fonts/Geist/Geist-VariableFont_wght.ttf")
     format("truetype");
@@ -55,16 +55,27 @@
 
 :root {
   color-scheme: light;
-  --paper: #f6f2ea;
-  --ink: #1f1f1f;
-  --muted: #6a665e;
-  --line: #d8d0c3;
+  --paper: #f2eee6;
+  --ink: #1d1e20;
+  --muted: #66645f;
+  --line: rgba(29, 30, 32, 0.14);
   --panel: #fffaf1;
-  --red: #c9423a;
-  --blue: #14779c;
-  --yellow: #d8b321;
-  --green: #53715b;
-  --shadow: 0 28px 80px rgba(31, 31, 31, 0.18);
+  --surface: rgba(255, 250, 241, 0.74);
+  --surface-strong: rgba(255, 250, 241, 0.92);
+  --red: #b94038;
+  --blue: #126f91;
+  --yellow: #d1aa34;
+  --green: #5f765e;
+  --accent: #2d5f72;
+  --button-bg: #202124;
+  --button-bg-hover: #2a2d31;
+  --button-light: rgba(255, 255, 255, 0.46);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 14px 38px rgba(29, 30, 32, 0.11);
+  --shadow: 0 30px 90px rgba(29, 30, 32, 0.2);
   --site-font: "GeistNumbers", "Qurova", "Helvetica Neue", Arial, sans-serif;
   font-family: var(--site-font);
   font-synthesis: none;
@@ -87,8 +98,8 @@ body {
   overflow-x: hidden;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(255, 250, 241, 0.96) 0%, rgba(246, 242, 234, 0.94) 42%, rgba(237, 230, 219, 0.9) 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(216, 208, 195, 0.18));
+    linear-gradient(145deg, rgba(255, 250, 241, 0.94) 0%, rgba(244, 239, 231, 0.96) 48%, rgba(227, 222, 212, 0.92) 100%),
+    linear-gradient(90deg, rgba(18, 111, 145, 0.08), transparent 36%, rgba(185, 64, 56, 0.07));
 }
 
 a {
@@ -108,3 +119,47 @@ img {
   max-width: 100%;
 }
 
+::selection {
+  color: var(--panel);
+  background: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(18, 111, 145, 0.72);
+  outline-offset: 3px;
+}
+
+@keyframes surfaceRise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}

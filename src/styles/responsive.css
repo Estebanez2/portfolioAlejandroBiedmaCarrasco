@@ -27,7 +27,12 @@
 
   .project-modal {
     height: min(760px, calc(100vh - 40px));
-    grid-template-rows: minmax(220px, 0.85fr) minmax(0, 1fr);
+    grid-template-rows: minmax(220px, 0.7fr) minmax(0, 1fr);
+  }
+
+  .close-button {
+    top: 12px;
+    right: 12px;
   }
 
   .page-heading {
@@ -82,11 +87,16 @@
   }
 
   .modal-media {
-    min-height: 0;
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 220px;
   }
 
   .modal-copy {
-    padding: 28px 24px;
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    padding: 24px;
     gap: 18px;
   }
 

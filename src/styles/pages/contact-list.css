@@ -1,4 +1,4 @@
-﻿.contact-list {
+.contact-list {
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -9,11 +9,16 @@
 
 .contact-list a {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   min-height: 128px;
   padding: clamp(18px, 2.2vw, 28px);
-  border: 1px solid rgba(31, 31, 31, 0.16);
-  background: var(--yellow);
+  border: 1px solid rgba(29, 30, 32, 0.12);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.13), transparent 42%),
+    var(--yellow);
+  box-shadow: var(--shadow-soft);
   flex: 1 1 0;
   display: inline-flex;
   align-items: center;
@@ -23,29 +28,38 @@
   font-size: clamp(1.15rem, 1.6vw, 1.5rem);
   font-weight: 700;
   text-transform: uppercase;
-  transition: border-color 160ms ease, transform 160ms ease, filter 160ms ease;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
 }
 
 .contact-list a::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
   opacity: 0;
   background:
-    radial-gradient(circle at 20% 18%, rgba(255, 250, 241, 0.5), transparent 26%),
-    linear-gradient(115deg, transparent 0 38%, rgba(255, 250, 241, 0.22) 46%, transparent 56% 100%);
-  transition: opacity 180ms ease;
+    linear-gradient(115deg, transparent 0 36%, rgba(255, 250, 241, 0.44) 48%, transparent 62% 100%);
+  transform: translateX(-60%);
+  transition: opacity 180ms ease, transform 480ms ease;
 }
 
 .contact-list a:nth-child(2) {
   color: var(--panel);
-  background: var(--blue);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 42%),
+    var(--blue);
 }
 
 .contact-list a:nth-child(3) {
   color: var(--panel);
-  background: var(--red);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 42%),
+    var(--red);
 }
 
 .contact-list span {
@@ -91,12 +105,14 @@
 }
 
 .contact-list a:hover {
-  border-color: rgba(31, 31, 31, 0.32);
+  border-color: rgba(29, 30, 32, 0.26);
+  box-shadow: 0 22px 52px rgba(29, 30, 32, 0.16);
   filter: saturate(1.08);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .contact-list a:hover::before {
   opacity: 1;
+  transform: translateX(60%);
 }
 

@@ -1,4 +1,4 @@
-﻿.site-shell {
+.site-shell {
   min-height: 100vh;
   padding: 34px 28px 190px;
 }
@@ -41,9 +41,10 @@
   right: 18px;
   min-height: 42px;
   padding: 4px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 250, 241, 0.9);
+  border: 1px solid rgba(29, 30, 32, 0.13);
+  border-radius: var(--radius-pill);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
   backdrop-filter: blur(18px);
   display: flex;
   align-items: center;
@@ -51,10 +52,12 @@
 }
 
 .language-switcher button {
+  position: relative;
+  overflow: hidden;
   min-width: 66px;
   height: 34px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 0 10px;
   color: var(--muted);
   background: transparent;
@@ -66,15 +69,43 @@
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.language-switcher button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0 36%,
+    rgba(255, 255, 255, 0.62) 47%,
+    transparent 60% 100%
+  );
+  transform: translateX(-80%);
+  transition: opacity 180ms ease, transform 420ms ease;
 }
 
 .language-switcher button.active {
   color: var(--ink);
-  background: rgba(216, 179, 33, 0.22);
+  background: rgba(209, 170, 52, 0.26);
+}
+
+.language-switcher button:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.language-switcher button:hover::before {
+  opacity: 1;
+  transform: translateX(80%);
 }
 
 .language-switcher button span {
   position: relative;
+  z-index: 1;
   flex: 0 0 auto;
   width: 22px;
   height: 14px;
@@ -124,8 +155,11 @@
   right: 28px;
   bottom: 22px;
   min-height: 54px;
-  border: 1px solid rgba(31, 31, 31, 0.18);
-  background: rgba(255, 250, 241, 0.9);
+  overflow: hidden;
+  border: 1px solid rgba(29, 30, 32, 0.14);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 241, 0.86);
+  box-shadow: var(--shadow-soft);
   backdrop-filter: blur(20px);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -133,13 +167,32 @@
 }
 
 .bottom-nav a {
+  position: relative;
+  overflow: hidden;
   display: grid;
   place-items: center;
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  border-right: 1px solid rgba(31, 31, 31, 0.12);
+  border-right: 1px solid rgba(29, 30, 32, 0.1);
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.bottom-nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0 36%,
+    rgba(255, 255, 255, 0.54) 48%,
+    transparent 62% 100%
+  );
+  transform: translateX(-65%);
+  transition: opacity 180ms ease, transform 420ms ease;
 }
 
 .bottom-nav a:last-child {
@@ -149,6 +202,10 @@
 .bottom-nav a:hover,
 .bottom-nav a.active {
   color: var(--ink);
-  background: rgba(216, 179, 33, 0.16);
+  background: rgba(209, 170, 52, 0.16);
 }
 
+.bottom-nav a:hover::before {
+  opacity: 1;
+  transform: translateX(65%);
+}
