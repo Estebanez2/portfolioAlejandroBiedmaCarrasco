@@ -1,10 +1,11 @@
 ﻿import React, { useEffect, useMemo, useState } from "react";
-import { projects } from "./data/portfolio.js";
+import { profile, projects } from "./data/portfolio.js";
 import { Shell } from "./components/Shell.jsx";
 import { AboutPage } from "./pages/AboutPage.jsx";
 import { ContactPage } from "./pages/ContactPage.jsx";
 import { IndexPage } from "./pages/IndexPage.jsx";
 import { ProjectPage } from "./pages/ProjectPage.jsx";
+import { preloadPortfolioAssets } from "./lib/preloadAssets.js";
 
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash || "#/");
@@ -33,6 +34,8 @@ function App() {
     setLang(nextLang);
     localStorage.setItem("portfolio-lang", nextLang);
   };
+
+  useEffect(() => preloadPortfolioAssets(profile, projects), []);
 
   let page = <IndexPage lang={lang} />;
   if (route === "#/contact") page = <ContactPage lang={lang} />;

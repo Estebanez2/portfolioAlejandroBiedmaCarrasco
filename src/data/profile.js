@@ -6,9 +6,9 @@ export const profile = {
     en: "Industrial engineer",
     es: "Ingeniero industrial",
   },
-  logo: asset("../assets/brand/logo-nombre.png"),
-  symbol: asset("../assets/brand/logo.png"),
-  portrait: asset("../assets/brand/cara.png"),
+  logo: asset("../assets/brand/logo-nombre.webp"),
+  symbol: asset("../assets/brand/logo.webp"),
+  portrait: asset("../assets/brand/cara.webp"),
   location: "Spain",
   intro: {
     en: "Portfolio of industrial design, product development and technical visualization projects.",
@@ -80,4 +80,5 @@ export const hobbies = {
   en: ["Karate", "Product design", "3D modeling", "Technical drawing"],
   es: ["Karate", "Diseño de producto", "Modelado 3D", "Dibujo técnico"],
 };
+
 

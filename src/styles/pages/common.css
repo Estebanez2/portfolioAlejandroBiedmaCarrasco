@@ -1,4 +1,3 @@
-﻿.modal-copy > span,
 .page-heading > span,
 .contact-heading > div > span,
 .about-heading-copy > span,
@@ -21,7 +20,6 @@
 
 .modal-copy p,
 .detail-copy p,
-.split-section p,
 .about-block p {
   color: var(--muted);
   font-size: clamp(1rem, 1.6vw, 1.2rem);
@@ -214,8 +212,6 @@
   text-transform: uppercase;
 }
 
-.split-section,
-.downloads-section,
 .story-section,
 .plans-section,
 .about-block {
@@ -223,15 +219,12 @@
   padding: 42px 0;
 }
 
-.split-section,
 .story-section {
   display: grid;
   grid-template-columns: minmax(240px, 0.7fr) minmax(320px, 1fr);
   gap: 32px;
 }
 
-.split-section h2,
-.downloads-section h2,
 .story-section h2,
 .plans-section h2,
 .about-block h2 {
@@ -242,9 +235,6 @@
   text-transform: uppercase;
 }
 
-.split-section p {
-  margin: 0;
-}
 
 .story-copy {
   display: grid;
@@ -285,34 +275,6 @@
   line-height: 1.52;
 }
 
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-}
-
-.spec-item {
-  min-height: 140px;
-  padding: 22px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.spec-item span {
-  color: var(--green);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.spec-item strong {
-  font-size: 1.15rem;
-  line-height: 1.24;
-}
 
 .gallery-section {
   display: grid;
@@ -449,13 +411,6 @@
   align-items: flex-start;
 }
 
-.plan-count {
-  min-width: 48px;
-  color: var(--muted);
-  font-size: clamp(1.08rem, 1.8vw, 1.45rem);
-  font-weight: 700;
-  text-align: right;
-}
 
 .plan-arrow {
   position: absolute;

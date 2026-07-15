@@ -40,7 +40,7 @@ nuevo-proyecto/
 Ejemplo de ruta:
 
 ```js
-cover: projectAsset("nuevo-proyecto", "images/portada.jpg")
+cover: projectAsset("nuevo-proyecto", "images/portada.webp")
 ```
 
 ## Cambiar datos personales
