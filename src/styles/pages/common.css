@@ -85,9 +85,12 @@
 }
 
 .project-brand {
-  width: clamp(380px, 42vw, 720px);
+  width: clamp(300px, 34vw, 560px);
+  max-height: clamp(180px, 34vh, 380px);
   height: auto;
   margin-bottom: 34px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .back-link {
@@ -156,6 +159,15 @@
   );
   transform: translateX(-45%);
   transition: opacity 160ms ease, transform 260ms ease;
+}
+
+.secondary-link.document-link::before {
+  background: linear-gradient(
+    115deg,
+    transparent 0 36%,
+    rgba(31, 31, 31, 0.18) 46%,
+    transparent 58% 100%
+  );
 }
 
 .document-link:hover::before {
@@ -278,26 +290,46 @@
   padding: 42px 0;
 }
 
-.gallery-section img {
+.gallery-section img,
+.gallery-section video {
   width: 100%;
   aspect-ratio: 1.08;
   object-fit: cover;
   border: 1px solid rgba(31, 31, 31, 0.16);
+  background: rgba(31, 31, 31, 0.08);
 }
 
 .gallery-section img:nth-child(-n + 2) {
   grid-column: span 3;
 }
 
-.gallery-section img:nth-child(n + 3) {
+.gallery-section img:nth-child(n + 3),
+.gallery-section video:nth-child(n + 3) {
   grid-column: span 2;
   aspect-ratio: 3 / 4;
   object-fit: contain;
   background: rgba(255, 250, 241, 0.55);
 }
 
+.project-detail-lumarc .gallery-section img:first-child {
+  grid-column: span 2;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: var(--panel);
+}
+
+.project-detail-lumarc .gallery-section img:nth-child(2) {
+  grid-column: span 4;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border: 0;
+  background: var(--panel);
+}
+
 .plans-heading {
-  width: min(700px, 100%);
+  width: min(1120px, 100%);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -356,8 +388,8 @@
 .plan-viewer {
   position: relative;
   margin: 24px auto 0;
-  width: min(700px, 100%);
-  height: min(78vh, 760px);
+  width: min(1180px, 100%);
+  height: min(92vh, 1040px);
   border: 0;
   background: transparent;
   display: grid;
@@ -365,11 +397,11 @@
 }
 
 .plan-viewer img {
-  width: min(58vw, 520px);
-  max-width: calc(100% - 148px);
+  width: min(86vw, 960px);
+  max-width: calc(100% - 132px);
   height: 100%;
   object-fit: contain;
-  border: 1px solid var(--line);
+  border: 0;
   background: var(--panel);
 }
 
@@ -384,4 +416,3 @@
 .page-heading h1 {
   max-width: 980px;
 }
-

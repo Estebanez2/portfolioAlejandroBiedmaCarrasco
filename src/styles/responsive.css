@@ -110,19 +110,23 @@
     grid-template-columns: 1fr;
   }
 
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .plans-heading {
     align-items: start;
     flex-direction: column;
   }
 
   .plan-viewer {
-    width: min(640px, 100%);
-    height: min(72vh, 660px);
+    width: min(1040px, 100%);
+    height: min(86vh, 900px);
   }
 
   .plan-viewer img {
-    width: min(70vw, 460px);
-    max-width: calc(100% - 136px);
+    width: min(86vw, 860px);
+    max-width: calc(100% - 124px);
   }
 }
 
@@ -214,6 +218,7 @@
   .modal-brand {
     display: block;
     width: 190px;
+    max-height: 115px;
     margin-bottom: 10px;
   }
 
@@ -250,8 +255,13 @@
   }
 
   .gallery-section img,
+  .gallery-section video,
   .gallery-section img:nth-child(-n + 2),
-  .gallery-section img:nth-child(n + 3) {
+  .gallery-section video:nth-child(-n + 2),
+  .gallery-section img:nth-child(n + 3),
+  .gallery-section video:nth-child(n + 3),
+  .project-detail-lumarc .gallery-section img:first-child,
+  .project-detail-lumarc .gallery-section img:nth-child(2) {
     grid-column: auto;
     aspect-ratio: 1.08;
   }

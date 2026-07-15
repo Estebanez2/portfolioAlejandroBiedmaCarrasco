@@ -1,9 +1,9 @@
 ﻿.project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 360px));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
   align-items: start;
-  justify-content: start;
+  justify-content: stretch;
   max-width: 100%;
 }
 
@@ -45,11 +45,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 240ms ease;
+  transition: opacity 180ms ease, transform 240ms ease;
+}
+
+.tile-cover-hover {
+  opacity: 0;
 }
 
 .project-tile:hover .tile-cover {
   transform: scale(1.045);
+}
+
+.project-tile:hover .tile-cover-hover {
+  opacity: 1;
 }
 
 .project-tile span,
@@ -99,7 +107,7 @@
 .project-tile strong {
   max-width: 12ch;
   margin-top: 8px;
-  font-size: clamp(2rem, 3.7vw, 3.85rem);
+  font-size: clamp(1.55rem, 2.8vw, 3rem);
   line-height: 0.9;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -178,8 +186,12 @@
 
 .modal-brand {
   width: clamp(240px, 26vw, 390px);
+  max-width: 100%;
+  max-height: clamp(120px, 22vh, 220px);
   height: auto;
   margin-bottom: clamp(18px, 2.7vw, 30px);
+  object-fit: contain;
+  object-position: left center;
 }
 
 .modal-details {

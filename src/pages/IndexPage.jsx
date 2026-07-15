@@ -16,7 +16,10 @@ export function IndexPage({ lang }) {
             onClick={() => setSelectedProject(project)}
             type="button"
           >
-            <img className="tile-cover" src={project.cover} alt="" />
+            <img className="tile-cover tile-cover-default" src={project.cover} alt="" />
+            {project.coverHover && (
+              <img className="tile-cover tile-cover-hover" src={project.coverHover} alt="" />
+            )}
             <span className="tile-logo" aria-hidden="true">
               <img className="tile-logo-default" src={project.logo} alt="" />
               <img className="tile-logo-hover" src={project.logoHover} alt="" />
@@ -63,7 +66,7 @@ function ProjectModal({ project, lang, onClose }) {
           <span className="sr-only">{copy.close}</span>
         </button>
         <div className="modal-media">
-          <img src={project.gallery[0] || project.cover} alt="" />
+          <img src={project.modalImage || project.gallery[0] || project.cover} alt="" />
         </div>
         <div className="modal-copy">
           <div className="modal-content">

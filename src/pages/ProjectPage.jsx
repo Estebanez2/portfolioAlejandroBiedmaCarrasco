@@ -29,7 +29,7 @@ export function ProjectPage({ project, lang }) {
   };
 
   return (
-    <article className="project-detail">
+    <article className={`project-detail project-detail-${project.id}`}>
       <a className="back-link" href="#/">
         <span aria-hidden="true">&lt;</span>
         {copy.backToIndex}
@@ -39,14 +39,26 @@ export function ProjectPage({ project, lang }) {
         <div className="detail-copy">
           <img className="project-brand" src={project.brand} alt="" />
           <div className="detail-actions">
-            <a
-              className="primary-link document-link"
-              href={project.document}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {copy.downloadPdf}
-            </a>
+            {project.document && (
+              <a
+                className="primary-link document-link"
+                href={project.document}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {copy.downloadPdf}
+              </a>
+            )}
+            {project.presentation && (
+              <a
+                className="secondary-link document-link"
+                href={project.presentation}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {copy.downloadPresentation}
+              </a>
+            )}
           </div>
         </div>
         <img src={project.cover} alt={`Render principal de ${project.title}`} />
@@ -56,7 +68,7 @@ export function ProjectPage({ project, lang }) {
         {localize(project.detailSections, lang).map((section) => (
           <section className="story-section" key={section.title}>
             <div>
-              <span className="section-kicker">Toca a Tiempo</span>
+              <span className="section-kicker">{project.title}</span>
               <h2>{section.title}</h2>
             </div>
             <div className="story-copy">
@@ -80,15 +92,28 @@ export function ProjectPage({ project, lang }) {
       </section>
 
       <section className="gallery-section" aria-label="Project gallery">
-        {project.gallery.map((image, index) => (
-          <img
-            key={image}
-            src={image}
-            alt={`View ${index + 1} of ${project.title}`}
-          />
-        ))}
+        {project.gallery.map((media, index) =>
+          isVideo(media) ? (
+            <video
+              key={media}
+              src={media}
+              aria-label={`Video ${index + 1} of ${project.title}`}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          ) : (
+            <img
+              key={media}
+              src={media}
+              alt={`View ${index + 1} of ${project.title}`}
+            />
+          ),
+        )}
       </section>
 
+      {project.plans.length > 0 && (
       <section className="plans-section">
         <div className="plans-heading">
           <div>
@@ -119,6 +144,11 @@ export function ProjectPage({ project, lang }) {
           </button>
         </div>
       </section>
+      )}
     </article>
   );
+}
+
+function isVideo(path) {
+  return /\.(mp4|webm|mov)$/i.test(path);
 }
