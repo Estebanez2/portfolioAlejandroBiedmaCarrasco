@@ -55,7 +55,7 @@ function ProjectModal({ project, lang, onClose }) {
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
       <article
-        className="project-modal"
+        className={`project-modal project-modal-${project.id}`}
         aria-modal="true"
         role="dialog"
         aria-labelledby="modal-title"
@@ -65,7 +65,7 @@ function ProjectModal({ project, lang, onClose }) {
           <span aria-hidden="true">x</span>
           <span className="sr-only">{copy.close}</span>
         </button>
-        <div className="modal-media">
+        <div className={`modal-media modal-media-${project.id}`}>
           <img src={project.modalImage || project.gallery[0] || project.cover} alt="" />
         </div>
         <div className="modal-copy">

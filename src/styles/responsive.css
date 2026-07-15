@@ -75,7 +75,8 @@
     padding-top: 18px;
   }
 
-  .detail-hero > img {
+  .detail-hero > img,
+  .glb-viewer {
     height: auto;
     min-height: 0;
     aspect-ratio: 1;
@@ -263,6 +264,11 @@
     font-size: clamp(2rem, 13vw, 3.6rem);
   }
 
+  .about-heading h1 {
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    line-height: 1.56;
+  }
+
   .primary-link,
   .secondary-link {
     width: 100%;
@@ -272,12 +278,20 @@
     grid-template-columns: 1fr;
   }
 
+  .project-detail-spira .gallery-section {
+    grid-template-columns: 1fr;
+  }
+
   .gallery-section img,
   .gallery-section video,
   .gallery-section img:nth-child(-n + 2),
   .gallery-section video:nth-child(-n + 2),
   .gallery-section img:nth-child(n + 3),
   .gallery-section video:nth-child(n + 3),
+  .project-detail-spira .gallery-section img:nth-child(-n + 2),
+  .project-detail-spira .gallery-section video:nth-child(3),
+  .project-detail-spira .gallery-section video:nth-child(4),
+  .project-detail-spira .gallery-section img:nth-child(n + 5),
   .project-detail-lumarc .gallery-section img:first-child,
   .project-detail-lumarc .gallery-section img:nth-child(2) {
     grid-column: auto;

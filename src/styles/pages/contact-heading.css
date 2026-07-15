@@ -11,8 +11,3 @@
   max-width: 900px;
   font-size: clamp(3.6rem, 7vw, 6.7rem);
 }
-
-.contact-heading > div > span {
-  font-size: clamp(1rem, 1.35vw, 1.28rem);
-}
-

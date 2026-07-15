@@ -171,6 +171,26 @@
   object-fit: cover;
 }
 
+.modal-media-spira {
+  background: #d9d9d9;
+}
+
+.modal-media-spira img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain !important;
+  object-position: center top;
+}
+
+.project-modal-spira {
+  grid-template-columns: minmax(500px, 0.9fr) minmax(520px, 1.1fr);
+}
+
+.project-modal-spira .modal-media {
+  display: grid;
+  place-items: stretch center;
+}
+
 .modal-copy {
   min-width: 0;
   padding: clamp(28px, 3.4vw, 48px);

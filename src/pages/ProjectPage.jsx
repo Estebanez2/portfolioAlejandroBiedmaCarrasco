@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { GlbViewer } from "../components/GlbViewer.jsx";
 import { localize, ui } from "../lib/i18n.js";
 
 export function ProjectPage({ project, lang }) {
@@ -14,7 +15,7 @@ export function ProjectPage({ project, lang }) {
       setSelectedGalleryIndex((current) =>
         current === project.gallery.length - 1 ? 0 : current + 1,
       );
-    }, 1200);
+    }, 800);
     return () => window.clearInterval(timerId);
   }, [hasGallerySlideshow, project?.gallery?.length]);
 
@@ -75,7 +76,16 @@ export function ProjectPage({ project, lang }) {
             )}
           </div>
         </div>
-        <img src={project.cover} alt={`Render principal de ${project.title}`} />
+        {project.model ? (
+          <GlbViewer
+            hint={copy.interact3d}
+            settings={project.modelSettings}
+            src={project.model}
+            title={project.title}
+          />
+        ) : (
+          <img src={project.cover} alt={`Render principal de ${project.title}`} />
+        )}
       </header>
 
       <section className="project-story" aria-label="Project information">
@@ -147,14 +157,13 @@ export function ProjectPage({ project, lang }) {
       {project.plans.length > 0 && (
         <section className="plans-section">
           <div className="plans-heading">
-            <div>
-              <span className="section-kicker">{copy.plans}</span>
-              <h2>{localize(selectedPlan.label, lang)}</h2>
-            </div>
-            <span className="plan-count">
-              {selectedPlanIndex + 1} / {project.plans.length}
-            </span>
+          <div>
+            <span className="section-kicker">{copy.plans}</span>
+            <h2>
+              {localize(selectedPlan.label, lang)} / {project.plans.length}
+            </h2>
           </div>
+        </div>
           <div className={`plan-viewer ${project.plansLayout === "portrait" ? "plan-viewer-portrait" : ""}`}>
             <button
               className="plan-arrow plan-arrow-left"
