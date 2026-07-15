@@ -328,6 +328,52 @@
   background: var(--panel);
 }
 
+.gallery-slideshow-section {
+  border-top: 1px solid var(--line);
+  padding: 42px 0;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.gallery-feature-image,
+.gallery-slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+}
+
+.gallery-feature-image {
+  border: 0;
+}
+
+.gallery-slideshow {
+  min-height: min(72vh, 720px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+}
+
+.gallery-slideshow img {
+  animation: galleryFade 420ms ease both;
+}
+
+@keyframes galleryFade {
+  from {
+    opacity: 0;
+    transform: scale(1.012);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .plans-heading {
   width: min(1120px, 100%);
   margin: 0 auto;
@@ -403,6 +449,16 @@
   object-fit: contain;
   border: 0;
   background: var(--panel);
+}
+
+.plan-viewer-portrait {
+  width: min(760px, 100%);
+  height: min(78vh, 760px);
+}
+
+.plan-viewer-portrait img {
+  width: min(54vw, 520px);
+  max-width: calc(100% - 132px);
 }
 
 .page-heading {

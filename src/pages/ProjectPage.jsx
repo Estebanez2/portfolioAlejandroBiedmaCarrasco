@@ -1,9 +1,22 @@
-﻿import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { localize, ui } from "../lib/i18n.js";
 
 export function ProjectPage({ project, lang }) {
   const [selectedPlanIndex, setSelectedPlanIndex] = useState(0);
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(0);
   const copy = ui[lang];
+  const hasGallerySlideshow = project?.galleryLayout === "slideshow" && project.gallery?.length > 0;
+  const selectedGalleryMedia = project?.gallery?.[selectedGalleryIndex];
+
+  useEffect(() => {
+    if (!hasGallerySlideshow) return undefined;
+    const timerId = window.setInterval(() => {
+      setSelectedGalleryIndex((current) =>
+        current === project.gallery.length - 1 ? 0 : current + 1,
+      );
+    }, 1200);
+    return () => window.clearInterval(timerId);
+  }, [hasGallerySlideshow, project?.gallery?.length]);
 
   if (!project) {
     return (
@@ -22,6 +35,7 @@ export function ProjectPage({ project, lang }) {
       current === 0 ? project.plans.length - 1 : current - 1,
     );
   };
+
   const goToNextPlan = () => {
     setSelectedPlanIndex((current) =>
       current === project.plans.length - 1 ? 0 : current + 1,
@@ -91,59 +105,76 @@ export function ProjectPage({ project, lang }) {
         ))}
       </section>
 
-      <section className="gallery-section" aria-label="Project gallery">
-        {project.gallery.map((media, index) =>
-          isVideo(media) ? (
-            <video
-              key={media}
-              src={media}
-              aria-label={`Video ${index + 1} of ${project.title}`}
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          ) : (
+      {hasGallerySlideshow ? (
+        <section className="gallery-slideshow-section" aria-label="Project gallery">
+          <img
+            className="gallery-feature-image"
+            src={project.galleryFeature}
+            alt={`Highlighted view of ${project.title}`}
+          />
+          <div className="gallery-slideshow">
             <img
-              key={media}
-              src={media}
-              alt={`View ${index + 1} of ${project.title}`}
+              key={selectedGalleryMedia}
+              src={selectedGalleryMedia}
+              alt={`View ${selectedGalleryIndex + 1} of ${project.title}`}
             />
-          ),
-        )}
-      </section>
+          </div>
+        </section>
+      ) : (
+        <section className="gallery-section" aria-label="Project gallery">
+          {project.gallery.map((media, index) =>
+            isVideo(media) ? (
+              <video
+                key={media}
+                src={media}
+                aria-label={`Video ${index + 1} of ${project.title}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <img
+                key={media}
+                src={media}
+                alt={`View ${index + 1} of ${project.title}`}
+              />
+            ),
+          )}
+        </section>
+      )}
 
       {project.plans.length > 0 && (
-      <section className="plans-section">
-        <div className="plans-heading">
-          <div>
-            <span className="section-kicker">{copy.plans}</span>
-            <h2>{localize(selectedPlan.label, lang)}</h2>
+        <section className="plans-section">
+          <div className="plans-heading">
+            <div>
+              <span className="section-kicker">{copy.plans}</span>
+              <h2>{localize(selectedPlan.label, lang)}</h2>
+            </div>
+            <span className="plan-count">
+              {selectedPlanIndex + 1} / {project.plans.length}
+            </span>
           </div>
-          <span className="plan-count">
-            {selectedPlanIndex + 1} / {project.plans.length}
-          </span>
-        </div>
-        <div className="plan-viewer">
-          <button
-            className="plan-arrow plan-arrow-left"
-            type="button"
-            onClick={goToPreviousPlan}
-            aria-label={copy.previousPlan}
-          >
-            <span aria-hidden="true">&lt;</span>
-          </button>
-          <img src={selectedPlan.image} alt={localize(selectedPlan.label, lang)} />
-          <button
-            className="plan-arrow plan-arrow-right"
-            type="button"
-            onClick={goToNextPlan}
-            aria-label={copy.nextPlan}
-          >
-            <span aria-hidden="true">&gt;</span>
-          </button>
-        </div>
-      </section>
+          <div className={`plan-viewer ${project.plansLayout === "portrait" ? "plan-viewer-portrait" : ""}`}>
+            <button
+              className="plan-arrow plan-arrow-left"
+              type="button"
+              onClick={goToPreviousPlan}
+              aria-label={copy.previousPlan}
+            >
+              <span aria-hidden="true">&lt;</span>
+            </button>
+            <img src={selectedPlan.image} alt={localize(selectedPlan.label, lang)} />
+            <button
+              className="plan-arrow plan-arrow-right"
+              type="button"
+              onClick={goToNextPlan}
+              aria-label={copy.nextPlan}
+            >
+              <span aria-hidden="true">&gt;</span>
+            </button>
+          </div>
+        </section>
       )}
     </article>
   );
