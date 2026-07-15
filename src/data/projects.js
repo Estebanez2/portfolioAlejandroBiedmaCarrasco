@@ -10,8 +10,8 @@ export const projects = [
       es: "Diseño de producto industrial",
     },
     cover: projectAsset("toca-a-tiempo", "images/portada.jpg"),
-    logo: projectAsset("toca-a-tiempo", "logo/logo-azul.png"),
-    logoHover: projectAsset("toca-a-tiempo", "logo/logo-rojo.png"),
+    logo: projectAsset("toca-a-tiempo", "logo/logo.png"),
+    logoHover: projectAsset("toca-a-tiempo", "logo/logo-hoover.png"),
     brand: projectAsset("toca-a-tiempo", "logo/logo-completo.png"),
     summary: {
       en: "An autónomous interactive product designed to make cognitive stimulation accessible, dignified and enjoyable for older adults.",
@@ -202,4 +202,49 @@ export const projects = [
       },
     ],
   },
+  {
+    id: "nombre-del-proyecto",
+    title: "Nombre del Proyecto",
+    year: "2026",
+    discipline: {
+      en: "Industrial Product Design",
+      es: "Diseño de producto industrial",
+    },
+    cover: projectAsset("nombre-del-proyecto", "images/portada.jpg"),
+    logo: projectAsset("nombre-del-proyecto", "logo/logo.png"),
+    logoHover: projectAsset("nombre-del-proyecto", "logo/logo-hoover.png"),
+    brand: projectAsset("nombre-del-proyecto", "logo/logo-completo.png"),
+    summary: {
+      en: "Short project summary.",
+      es: "Resumen breve del proyecto.",
+    },
+    modalDetails: {
+      en: [
+        { label: "Project 02", value: "Nombre del Proyecto" },
+        { label: "Typology", value: "Industrial Product Design" },
+        { label: "Course", value: "Course name" },
+        { label: "Authors", value: ["Alejandro Biedma"] },
+      ],
+      es: [
+        { label: "Proyecto 02", value: "Nombre del Proyecto" },
+        { label: "Tipología", value: "Diseño de producto industrial" },
+        { label: "Curso", value: "Nombre del curso" },
+        { label: "Autores", value: ["Alejandro Biedma"] },
+      ],
+    },
+    detailSections: {
+      en: [],
+      es: [],
+    },
+    gallery: [
+      projectAsset("nombre-del-proyecto", "renders/render-1.jpg"),
+    ],
+    document: projectAsset("nombre-del-proyecto", "documents/memoria.pdf"),
+    plans: [
+      {
+        label: { en: "Drawing 1", es: "Plano 1" },
+        image: projectAsset("nombre-del-proyecto", "plans/plano-1.png"),
+      },
+    ],
+  }
 ];
